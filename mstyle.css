@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: white;
+  background-color: #36393e;
+  font-family: 'Open Sans', 'sans-serif';
+  outline: none;
+  font-size: 15px;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.entireIngredient {
+  border: 5px solid #36393e;
+  -webkit-box-shadow: 0px 0px 2px 2px white;
+          box-shadow: 0px 0px 2px 2px white;
+  background-color: #36393e;
+  margin: 20px 5px 20px 5px;
+}
+
+.form-elem {
+  width: 96%;
+  margin: 2%;
+  display: block;
+}
+
+input {
+  background-color: white;
+  color: #36393e;
+}
+
+input:hover {
+  background-color: #eeeeee;
+}
+
+#addIngredient {
+  -webkit-box-shadow: 0px 0px 2px 2px white;
+          box-shadow: 0px 0px 2px 2px white;
+  background-color: white;
+  color: #36393e;
+  border: none;
+  margin: 5px;
+  padding: 5px;
+}
+
+#addIngredient:hover {
+  background-color: #bbbbbb;
+  -webkit-box-shadow: 0px 0px 2px 2px #bbbbbb;
+          box-shadow: 0px 0px 2px 2px #bbbbbb;
+}
+
+.exit {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-box-shadow: inset 0px 0px 1px 1px, 0px 0px 1px 1px;
+          box-shadow: inset 0px 0px 1px 1px, 0px 0px 1px 1px;
+  border: none;
+  height: 30px;
+  width: 30px;
+  line-height: 15px;
+}
+
+.exit:hover {
+  background-color: #222222;
+}
+
+@media screen and (min-width: 1100px) {
+  * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    color: white;
+    background-color: #36393e;
+    font-size: 20px;
+    font-family: 'Open Sans', 'sans-serif';
+    outline: none;
+  }
+  h1 {
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 50px;
+    margin: 5px;
+  }
+  form {
+    display: block;
+    background-color: #36393e;
+  }
+  #userAddedElems {
+    -webkit-box-flex: 60%;
+        -ms-flex: 60%;
+            flex: 60%;
+  }
+  #userAddedElems * {
+    width: 70%;
+  }
+  .entireIngredient {
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+    width: 90%;
+    margin: 20px 5% 20px 5%;
+    padding: 20px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: .5fr 1fr 1fr 1fr .1fr;
+        grid-template-columns: .5fr 1fr 1fr 1fr .1fr;
+    -ms-grid-rows: auto auto;
+        grid-template-rows: auto auto;
+    border: 3px solid white;
+    -webkit-box-shadow: 0px 0px 5px 5px white;
+            box-shadow: 0px 0px 5px 5px white;
+  }
+  .entireIngredient * {
+    width: 30%;
+    min-width: 100px;
+    margin: 5px;
+    padding: 2px;
+    height: auto;
+  }
+  .entireIngredient .exit {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    -webkit-box-shadow: inset 0px 0px 2px 2px, 0px 0px 2px 2px;
+            box-shadow: inset 0px 0px 2px 2px, 0px 0px 2px 2px;
+    border: none;
+    height: 50px;
+    line-height: 25px;
+    width: 50px;
+  }
+  input {
+    background-color: white;
+    color: #36393e;
+    padding: 0px;
+    margin: 3px;
+  }
+  #addIngredient {
+    color: #36393e;
+    display: block;
+    padding: 20px;
+    margin: 5%;
+    -webkit-box-shadow: 0px 0px 5px 5px white;
+            box-shadow: 0px 0px 5px 5px white;
+    background-color: white;
+    border: solid white;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #222222;
+  }
+  button#addIngredient:hover {
+    background-color: #bbbbbb;
+    -webkit-box-shadow: 0px 0px 5px 5px #bbbbbb;
+            box-shadow: 0px 0px 5px 5px #bbbbbb;
+    border: solid #bbbbbb;
+  }
+  #totalPremixQuantity {
+    position: relative;
+  }
+  input:hover {
+    background-color: #eeeeee;
+  }
+  .flex-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: horizontal;
+            flex-direction: horizontal;
+    width: 100%;
+  }
+  .totalPremixQuantity {
+    min-width: 1000px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5%;
+  }
+  .totalPremixQuantity div {
+    display: block;
+  }
+  .totalPremixQuantity #totalPremixQuantity {
+    display: block;
+  }
+}
+/*# sourceMappingURL=mstyle.css.map */

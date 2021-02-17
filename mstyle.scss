@@ -38,7 +38,6 @@ $formhover: #eeeeee;
     border: none;
     margin: 5px;
     padding: 5px;
-    cursor: pointer;
     &:hover{
         background-color: $secondaryhover;
         box-shadow:  0px 0px 2px 2px$secondaryhover;
@@ -53,7 +52,6 @@ $formhover: #eeeeee;
     height: 30px; 
     width: 30px;
     line-height: 15px;
-    cursor: pointer;
     &:hover{
         background-color: $mainhover;
     }
@@ -152,6 +150,7 @@ $formhover: #eeeeee;
       .flex-container{
           display: flex;
           justify-content: space-between;
+          flex-direction: horizontal;
           width: 100%;
       }
       
