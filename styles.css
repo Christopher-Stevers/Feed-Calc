@@ -142,11 +142,14 @@ input:hover {
     padding: 0px;
     margin: 3px;
   }
+  .result {
+    margin-right: 150px;
+  }
   #addIngredient {
     color: #36393e;
     display: block;
     padding: 20px;
-    margin: 5%;
+    margin: 10px 5%;
     -webkit-box-shadow: 0px 0px 5px 5px white;
             box-shadow: 0px 0px 5px 5px white;
     background-color: white;

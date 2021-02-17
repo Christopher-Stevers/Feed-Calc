@@ -34,9 +34,9 @@ function addElem(feedName) {
          
           <div class="form-elem" id="name${stringExtra}"  >${feedName}</div>
           
-          <input class="form-elem" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
+          <input type="number" class="form-elem" type="number" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
           
-          <input class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
+          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
@@ -143,11 +143,11 @@ document.getElementById("addIngredient").addEventListener("click", function () {
   elem.setAttribute("class", `entireIngredient`);
   elem.innerHTML = `
          
-          <input class="form-elem" id="name${stringExtra}" name="name" placeholder="name"></input>
+          <input type="text" class="form-elem" id="name${stringExtra}" name="name" placeholder="name"></input>
           
-          <input class="form-elem" id="cost${stringExtra}" name="cost" placeholder="cost"></input>
+          <input type="number" class="form-elem" id="cost${stringExtra}" name="cost" placeholder="cost"></input>
           
-          <input class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add rate"></input>
+          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add rate"></input>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
