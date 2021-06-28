@@ -1,3 +1,10 @@
+const weightTable={
+ kg: 1, 
+ lb: 0.45,
+ tonne: 1000,
+ ton: 907.1847,
+
+}
 
 let elem = "";
 let ingredientsObj = {};
@@ -35,8 +42,10 @@ function addElem(feedName) {
           <div class="form-elem" id="name${stringExtra}"  >${feedName}</div>
           
           <input type="number" class="form-elem" type="number" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
+          <select id="costperunit${stringExtra}"><option>$/kg</option><option>$/lb</option><option>$/ton</option><option>$/tonne</option></select>
           
           <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
+          <select id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
@@ -91,7 +100,11 @@ function addElem(feedName) {
     let costInput = document.getElementById(`cost${property}`);
     costInput.addEventListener('input', function (e) {
 
-      let feedCost = parseFloat(e.target.value);
+      let feedCost = parseFloat(e.target.value)
+      /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
+      console.log(document.getElementById(`costperunit${property}`).value.slice(2));
+      console.log(feedCost);
+      
       if (typeof feedCost == "number") {
         ingredientsObj[property].feedCost = feedCost;
       }
@@ -106,7 +119,8 @@ function addElem(feedName) {
 
     let addRateInput = document.getElementById(`add-rate${property}`);
     addRateInput.addEventListener('input', function (e) {
-      let addRate = parseFloat(e.target.value);
+      
+      let addRate = parseFloat(e.target.value)*weightTable[document.getElementById(`unit${property}`).value];
       if (typeof addRate == "number") {
         ingredientsObj[property].addRate = addRate;
       }
@@ -116,8 +130,42 @@ function addElem(feedName) {
       sumIngredientWeight(ingredientsObj);
     });
 
+  let costPerInput=document.getElementById(`costperunit${property}`);
+  console.log(costPerInput);
+  costPerInput.addEventListener('change', function(e){
+
+    let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
+    /weightTable[e.target.value.slice(2)];
+    console.log(document.getElementById(`costperunit${property}`).value.slice(2));
+    console.log(feedCost);
+    
+    if (typeof feedCost == "number") {
+      ingredientsObj[property].feedCost = feedCost;
+    }
+    else {
+      ingredientsObj[property].feedCost = 0;
+    }
+    sumIngredientWeight(ingredientsObj);
 
 
+  });
+
+
+
+  let addRateUnit = document.getElementById(`unit${property}`);
+  addRateUnit.addEventListener('input', function (e) {
+    let addRate=document.getElementById(`add-rate${property}`)*e.target.value;
+    if (typeof addRate == "number") {
+      ingredientsObj[property].addRate = addRate;
+    }
+    else {
+      ingredientsObj[property].addRate = 0;
+    }
+    sumIngredientWeight(ingredientsObj);
+  });
+
+
+  
   }
 
 
@@ -147,7 +195,7 @@ document.getElementById("addIngredient").addEventListener("click", function () {
           
           <input type="number" class="form-elem" id="cost${stringExtra}" name="cost" placeholder="cost"></input>
           
-          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add rate"></input>
+          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add rate"></input><span>kls</span>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
