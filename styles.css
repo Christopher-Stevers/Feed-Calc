@@ -2,10 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap");
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: white;
   background-color: #36393e;
-  font-family: 'Open Sans', 'sans-serif';
+  font-family: "Open Sans", "sans-serif";
   outline: none;
   font-size: 15px;
 }
@@ -13,11 +13,17 @@
 h1 {
   font-size: 25px;
 }
-
+body {
+  justify-content: center;
+  justify-items: center;
+}
+body>div, header{margin: auto;}
 .entireIngredient {
+  margin: 20px 10% 20px 5%;
+  max-width: 400px;
   border: 5px solid #36393e;
   -webkit-box-shadow: 0px 0px 2px 2px white;
-          box-shadow: 0px 0px 2px 2px white;
+  box-shadow: 0px 0px 2px 2px white;
   background-color: #36393e;
   margin: 20px 5px 20px 5px;
 }
@@ -27,20 +33,63 @@ h1 {
   margin: 2%;
   display: block;
 }
+.unit-elem {
+  margin: 2%;
+}
 
 input {
   background-color: white;
   color: #36393e;
   max-width: 300px;
 }
-
+.flex {
+  display: flex;
+}
 input:hover {
   background-color: #eeeeee;
 }
+#fullscreen{
+  height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.733);
+  line-height: 100vh;
+  text-align: center;
+}
 
+.modal{max-width: 100%;
+width: 400px;
+padding: 20px;
+line-height: 1.5em;
+border-radius: 1rem;
+animation-name: "expand";
+animation-duration: .5s;}
+@keyframes expand {
+0%{transform: scale(.95)}
+100%{transform: scale(1)}
+
+}
+.modal>p{float: left;}
+#remove{float: right;
+  font-size: 1rem;
+  border: 2px solid white;
+height: 2rem;
+width: 2rem;
+line-height: 1.5rem;
+text-align: center;
+border-radius: 50%;
+transition-duration: .2s;}
+#remove:hover{transform: scale(1.05);
+background-color:hsl(217, 0%, 23%);
+cursor: pointer;}
 #addIngredient {
   -webkit-box-shadow: 0px 0px 2px 2px white;
-          box-shadow: 0px 0px 2px 2px white;
+  box-shadow: 0px 0px 2px 2px white;
   background-color: white;
   color: #36393e;
   border: none;
@@ -52,17 +101,27 @@ input:hover {
 #addIngredient:hover {
   background-color: #bbbbbb;
   -webkit-box-shadow: 0px 0px 2px 2px #bbbbbb;
-          box-shadow: 0px 0px 2px 2px #bbbbbb;
+  box-shadow: 0px 0px 2px 2px #bbbbbb;
 }
+#userAddedElems{
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  
+}
+.flex-container {
+  width: 100%;
 
+}
 .exit {
   -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  -ms-grid-row-align: center;
+  align-self: center;
   -webkit-box-shadow: inset 0px 0px 1px 1px, 0px 0px 1px 1px;
-          box-shadow: inset 0px 0px 1px 1px, 0px 0px 1px 1px;
+  box-shadow: inset 0px 0px 1px 1px, 0px 0px 1px 1px;
   border: none;
   height: 30px;
   width: 30px;
@@ -73,7 +132,7 @@ input:hover {
 .exit:hover {
   background-color: #222222;
 }
-
+/*
 @media screen and (min-width: 1100px) {
   * {
     -webkit-box-sizing: border-box;
@@ -197,4 +256,5 @@ input:hover {
     display: block;
   }
 }
+*/
 /*# sourceMappingURL=styles.css.map */

@@ -1,3 +1,20 @@
+
+const loadEvent=()=>{
+  const div=document.createElement("div");
+  div.innerHTML=`<div class="modal">
+  <div class="button-container"><button id="remove">x</button></div><div></div><p>Tired of manually calculating your feed costs? Tired of the mistakes and double-checking?
+  Use this tool to safely and easily find your feed costs based on data you've already collected.
+  Simply input the amount of premix you've used with each ration, your ingredient prices, and the make up of that ration by weight.
+  Once you've entered your information, you'll have your feed cost for that ration to add to your total cost of production.
+  </p>
+  </div>`;
+  div.id="fullscreen";
+  document.getElementById("header").appendChild(div);
+  console.log("yeet");
+  div.addEventListener("click", function(e){e.target.remove()});
+  document.getElementById("remove").addEventListener("click", function(e){div.remove()});
+}
+loadEvent();
 const weightTable={
  kg: 1, 
  lb: 0.45,
@@ -41,11 +58,11 @@ function addElem(feedName) {
          
           <div class="form-elem" id="name${stringExtra}"  >${feedName}</div>
           
-          <input type="number" class="form-elem" type="number" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
-          <select id="costperunit${stringExtra}"><option>$/kg</option><option>$/lb</option><option>$/ton</option><option>$/tonne</option></select>
+          <span class="flex"><input type="number" class="form-elem" type="number" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
+          <select class="unit-elem" id="costperunit${stringExtra}"><option>$/kg</option><option>$/lb</option><option>$/ton</option><option>$/tonne</option></select></span>
           
-          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
-          <select id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select>
+          <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
+          <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
@@ -193,9 +210,11 @@ document.getElementById("addIngredient").addEventListener("click", function () {
          
           <input type="text" class="form-elem" id="name${stringExtra}" name="name" placeholder="name"></input>
           
-          <input type="number" class="form-elem" id="cost${stringExtra}" name="cost" placeholder="cost"></input>
+          <span class="flex"><input type="number" class="form-elem" type="number" id="cost${stringExtra}" name="cost" placeholder="cost" ></input>
+          <select class="unit-elem" id="costperunit${stringExtra}"><option>$/kg</option><option>$/lb</option><option>$/ton</option><option>$/tonne</option></select></span>
           
-          <input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add rate"></input><span>kls</span>
+          <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
+          <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
           <button id="${stringExtra}exit" class="exit">x</button>
         
   `;
