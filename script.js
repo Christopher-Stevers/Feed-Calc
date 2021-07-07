@@ -22,12 +22,20 @@ const weightTable={
  ton: 907.1847,
 
 }
+const timeTable={
+  day: 1, 
+  week: 7, 
+  month: 30,
+  year: 365
+
+}
 
 let elem = "";
 let ingredientsObj = {};
 let extraIngredients = 0;
 let totalPremix = parseFloat(document.getElementById("totalPremixQuantity").value);
-function sumIngredientWeight(obj) {
+function sumIngredientWeight() {
+  const obj=ingredientsObj;
   let allIngredientCost = 0;
   for (const property in obj) {
     if (obj[property].hasOwnProperty("addRate") && obj[property].hasOwnProperty("feedCost")) {
@@ -37,9 +45,14 @@ function sumIngredientWeight(obj) {
         allIngredientCost = ingredientCost + allIngredientCost;
         let premixPerBatch = parseFloat(document.getElementById("add-rate0").value);
        let answer = allIngredientCost * totalPremix / premixPerBatch;
-       
+       const option=document.getElementById("answer-option");
+       const inputTime=document.getElementById("input-options");
+       console.log(option.value.slice(1));
+       answer=answer*timeTable[option.value.slice(1)];
+       answer=answer/timeTable[inputTime.value.slice(1)];
         if (typeof answer === "number"&&answer.toString()!=="NaN") {
-         document.getElementById("answer").innerHTML=" $"+answer.toString();
+         document.getElementById("answer").innerHTML=" $"+answer.toLocaleString();
+         document.getElementById("answer-option").style.visibility="visible";
         }
 
       }
@@ -299,3 +312,7 @@ document.getElementById("addIngredient").addEventListener("click", function () {
 
 
 });
+const closure=()=>{}
+document.getElementById("answer-option").addEventListener('input', sumIngredientWeight);
+document.getElementById("input-options").addEventListener('input', sumIngredientWeight);
+console.log(document.getElementById("answer-option"));
