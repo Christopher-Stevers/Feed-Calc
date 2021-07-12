@@ -35,7 +35,6 @@ let extraIngredients = 0;
 let totalPremix = parseFloat(document.getElementById("totalPremixQuantity").value);
 function sumIngredientWeight() {
   const obj=ingredientsObj;
-  console.log(obj);
   let allIngredientCost = 0;
   for (const property in obj) {
     if (obj[property].hasOwnProperty("addRate") && obj[property].hasOwnProperty("feedCost")) {
@@ -44,7 +43,6 @@ function sumIngredientWeight() {
         let ingredientCost = obj[property].addRate * obj[property].feedCost;
         allIngredientCost = ingredientCost + allIngredientCost;
         let premixPerBatch = obj["0"].addRate;
-        console.log(premixPerBatch);
        let answer = allIngredientCost * totalPremix / premixPerBatch;
        const option=document.getElementById("answer-option");
        const inputTime=document.getElementById("input-options");
@@ -53,6 +51,8 @@ function sumIngredientWeight() {
         if (typeof answer === "number"&&answer.toString()!=="NaN") {
          document.getElementById("answer").innerHTML=" $"+answer.toLocaleString();
          document.getElementById("answer-option").style.visibility="visible";
+         console.log(obj[property].addRate* totalPremix / premixPerBatch+" kgs of "+obj[property].feedKind);
+         
         }
 
       }
@@ -61,6 +61,7 @@ function sumIngredientWeight() {
   return "hello"
 }
 function addElem(feedName) {
+  
   //create a string that is the same is as the number of the element by creation
   let stringExtra = extraIngredients.toString();
   //add new element
@@ -102,10 +103,11 @@ function addElem(feedName) {
 
   }
   ingredientsObj[stringExtra] = elemObj;
-  ingredientsObj[stringExtra].feedKind = "";
+  ingredientsObj[stringExtra].feedKind = feedName;
   ingredientsObj[stringExtra].feedCost = 0;
   ingredientsObj[stringExtra].addRate = 0;
   //adds onchange event listeners
+
   for (const property in ingredientsObj) {
 
 
@@ -132,7 +134,6 @@ function addElem(feedName) {
 
       let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
       /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
-      console.log("Cost input changed");
       
       if (typeof feedCost == "number") {
         ingredientsObj[property].feedCost = feedCost;
@@ -306,7 +307,6 @@ document.getElementById("addIngredient").addEventListener("click", function () {
     });
 
     let costPerInput=document.getElementById(`costperunit${property}`);
-    console.log(costPerInput);
     costPerInput.addEventListener('change', function(e){
   
      
@@ -330,7 +330,6 @@ document.getElementById("addIngredient").addEventListener("click", function () {
     addRateUnit.addEventListener('change', function (e) {
      // let addRate=document.getElementById(`add-rate${property}`)*
       let addRate=parseFloat(document.getElementById(`add-rate${property}`).value*weightTable[document.getElementById(`unit${property}`).value]);
-      console.log(addRate);
       if (typeof addRate == "number") {
         ingredientsObj[property].addRate = addRate;
       }
