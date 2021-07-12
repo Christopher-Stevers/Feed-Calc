@@ -10,7 +10,6 @@ const loadEvent=()=>{
   </div>`;
   div.id="fullscreen";
   document.getElementById("header").appendChild(div);
-  console.log("yeet");
   div.addEventListener("click", function(e){e.target.remove()});
   document.getElementById("remove").addEventListener("click", function(e){div.remove()});
 }
@@ -36,6 +35,7 @@ let extraIngredients = 0;
 let totalPremix = parseFloat(document.getElementById("totalPremixQuantity").value);
 function sumIngredientWeight() {
   const obj=ingredientsObj;
+  console.log(obj);
   let allIngredientCost = 0;
   for (const property in obj) {
     if (obj[property].hasOwnProperty("addRate") && obj[property].hasOwnProperty("feedCost")) {
@@ -43,11 +43,11 @@ function sumIngredientWeight() {
 
         let ingredientCost = obj[property].addRate * obj[property].feedCost;
         allIngredientCost = ingredientCost + allIngredientCost;
-        let premixPerBatch = parseFloat(document.getElementById("add-rate0").value);
+        let premixPerBatch = obj["0"].addRate;
+        console.log(premixPerBatch);
        let answer = allIngredientCost * totalPremix / premixPerBatch;
        const option=document.getElementById("answer-option");
        const inputTime=document.getElementById("input-options");
-       console.log(option.value.slice(1));
        answer=answer*timeTable[option.value.slice(1)];
        answer=answer/timeTable[inputTime.value.slice(1)];
         if (typeof answer === "number"&&answer.toString()!=="NaN") {
@@ -130,10 +130,9 @@ function addElem(feedName) {
     let costInput = document.getElementById(`cost${property}`);
     costInput.addEventListener('input', function (e) {
 
-      let feedCost = parseFloat(e.target.value)
+      let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
       /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
-      console.log(document.getElementById(`costperunit${property}`).value.slice(2));
-      console.log(feedCost);
+      console.log("Cost input changed");
       
       if (typeof feedCost == "number") {
         ingredientsObj[property].feedCost = feedCost;
@@ -161,14 +160,10 @@ function addElem(feedName) {
     });
 
   let costPerInput=document.getElementById(`costperunit${property}`);
-  console.log(costPerInput);
   costPerInput.addEventListener('change', function(e){
 
     let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
-    /weightTable[e.target.value.slice(2)];
-    console.log(document.getElementById(`costperunit${property}`).value.slice(2));
-    console.log(feedCost);
-    
+    /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
     if (typeof feedCost == "number") {
       ingredientsObj[property].feedCost = feedCost;
     }
@@ -183,8 +178,8 @@ function addElem(feedName) {
 
 
   let addRateUnit = document.getElementById(`unit${property}`);
-  addRateUnit.addEventListener('input', function (e) {
-    let addRate=document.getElementById(`add-rate${property}`)*e.target.value;
+  addRateUnit.addEventListener('change', function (e) {
+    let addRate=parseFloat(document.getElementById(`add-rate${property}`).value*weightTable[document.getElementById(`unit${property}`).value]);
     if (typeof addRate == "number") {
       ingredientsObj[property].addRate = addRate;
     }
@@ -212,6 +207,10 @@ totalPremixQuantity.addEventListener('input', function (e) {
   sumIngredientWeight(ingredientsObj);
   
 });
+
+
+
+
 document.getElementById("addIngredient").addEventListener("click", function () {
   //create a string that is the same is as the number of the element by creation
   let stringExtra = extraIngredients.toString();
@@ -280,7 +279,8 @@ document.getElementById("addIngredient").addEventListener("click", function () {
     let costInput = document.getElementById(`cost${property}`);
     costInput.addEventListener('input', function (e) {
 
-      let feedCost = parseFloat(e.target.value);
+      let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
+      /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
       if (typeof feedCost == "number") {
         ingredientsObj[property].feedCost = feedCost;
       }
@@ -295,7 +295,7 @@ document.getElementById("addIngredient").addEventListener("click", function () {
 
     let addRateInput = document.getElementById(`add-rate${property}`);
     addRateInput.addEventListener('input', function (e) {
-      let addRate = parseFloat(e.target.value);
+      let addRate = parseFloat(e.target.value)*weightTable[document.getElementById(`unit${property}`).value];
       if (typeof addRate == "number") {
         ingredientsObj[property].addRate = addRate;
       }
@@ -305,7 +305,41 @@ document.getElementById("addIngredient").addEventListener("click", function () {
       sumIngredientWeight(ingredientsObj);
     });
 
-
+    let costPerInput=document.getElementById(`costperunit${property}`);
+    console.log(costPerInput);
+    costPerInput.addEventListener('change', function(e){
+  
+     
+      let feedCost = parseFloat(document.getElementById(`cost${property}`).value)
+      /weightTable[document.getElementById(`costperunit${property}`).value.slice(2)];
+      
+      if (typeof feedCost == "number") {
+        ingredientsObj[property].feedCost = feedCost;
+      }
+      else {
+        ingredientsObj[property].feedCost = 0;
+      }
+      sumIngredientWeight(ingredientsObj);
+  
+  
+    });
+  
+  
+  
+    let addRateUnit = document.getElementById(`unit${property}`);
+    addRateUnit.addEventListener('change', function (e) {
+     // let addRate=document.getElementById(`add-rate${property}`)*
+      let addRate=parseFloat(document.getElementById(`add-rate${property}`).value*weightTable[document.getElementById(`unit${property}`).value]);
+      console.log(addRate);
+      if (typeof addRate == "number") {
+        ingredientsObj[property].addRate = addRate;
+      }
+      else {
+        ingredientsObj[property].addRate = 0;
+      }
+      sumIngredientWeight(ingredientsObj);
+    });
+  
 
   }
 
@@ -315,4 +349,3 @@ document.getElementById("addIngredient").addEventListener("click", function () {
 const closure=()=>{}
 document.getElementById("answer-option").addEventListener('input', sumIngredientWeight);
 document.getElementById("input-options").addEventListener('input', sumIngredientWeight);
-console.log(document.getElementById("answer-option"));
