@@ -77,7 +77,7 @@ function addElem(feedName) {
           
           <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
           <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
-          <button id="${stringExtra}exit" class="exit">\u2716</button>
+          <button aria-describedby="remove ingredient" id="${stringExtra}exit" class="exit">\u2716</button>
         
   `;
   const userElem = document.getElementById("userAddedElems");
@@ -228,7 +228,7 @@ document.getElementById("addIngredient").addEventListener("click", function () {
           
           <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
           <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
-          <button id="${stringExtra}exit" class="exit">\u2716</button>
+          <button  aria-describedby="remove ingredient" id="${stringExtra}exit" class="exit">\u2716</button>
         
   `;
   userElem = document.getElementById("userAddedElems");
