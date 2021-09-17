@@ -2,7 +2,7 @@
 const loadEvent=()=>{
   const div=document.createElement("div");
   div.innerHTML=`<div class="modal">
-  <div class="button-container"><button id="remove">x</button></div><div></div><p>Tired of manually calculating your feed costs? Tired of the mistakes and double-checking?
+  <div class="button-container"><button id="remove">\u2716</button></div><div></div><p>Tired of manually calculating your feed costs? Tired of the mistakes and double-checking?
   Use this tool to safely and easily find your feed costs based on data you've already collected.
   Simply input the amount of premix you've used with each ration, your ingredient prices, and the make up of that ration by weight.
   Once you've entered your information, you'll have your feed cost for that ration to add to your total cost of production.
@@ -77,7 +77,7 @@ function addElem(feedName) {
           
           <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
           <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
-          <button id="${stringExtra}exit" class="exit">x</button>
+          <button id="${stringExtra}exit" class="exit">\u2716</button>
         
   `;
   const userElem = document.getElementById("userAddedElems");
@@ -228,7 +228,7 @@ document.getElementById("addIngredient").addEventListener("click", function () {
           
           <span class="flex"><input type="number" class="form-elem" id="add-rate${stringExtra}" name="add-rate" placeholder="add-rate"></input>
           <select class="unit-elem" id="unit${stringExtra}"><option>kg</option><option>lb</option><option>ton</option><option>tonne</option></select></span>
-          <button id="${stringExtra}exit" class="exit">x</button>
+          <button id="${stringExtra}exit" class="exit">\u2716</button>
         
   `;
   userElem = document.getElementById("userAddedElems");

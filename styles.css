@@ -71,8 +71,8 @@ animation-name: "expand";
 animation-duration: .5s;
 max-width: 95vw;}
 @keyframes expand {
-0%{transform: scale(.95)}
-100%{transform: scale(1)}
+0%{transform: scale(1)}
+100%{transform: scale(1.05)}
 
 }
 .modal>p{float: left;}
